@@ -2,33 +2,37 @@
 
 class A
 {
-	public:
-	A() {}
-	~A() {}
+public:
+	int x;
+
 	void foo() {}
+
+private:
+	std::string secret;
+
+	void hidden() {}
+
+protected:
+	D* objects;
+
+	void protectedMethod() {}
 };
 
 class B : public A
 {
 public:
-	B() {}
-	~B() {}
 	void bar() {}
 };
 
 class C : public A
 {
-	public:
-	C() {}
-	~C() {}
+public:
 	void baz() {}
 };
 
 class D
 {
-	public:
-	D() {}
-	~D() {}
+public:
 	void qux() {}
 };
 
