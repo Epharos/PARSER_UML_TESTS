@@ -1,5 +1,7 @@
 #include <iostream>
 
+class D; // Forward declaration
+
 class A
 {
 public:
