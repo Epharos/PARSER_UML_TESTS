@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 class Location; // Forward declaration
 
@@ -31,9 +32,17 @@ class Cat : public LivingBeing
 
 class Location
 {
+	protected:
+		std::vector<Prop> props;
 	public:
 		virtual void describe() = 0; // Pure virtual function
 		virtual ~Location() {}        // Virtual destructor
+
+		bool addProp(Prop* prop)
+		{
+			props.push_back(*prop);
+			return true;
+		}
 };
 
 class Forest : public Location
@@ -60,6 +69,34 @@ class House : public Location
 		void describe() override
 		{
 			std::cout << "A cozy house with a warm fireplace." << std::endl;
+		}
+};
+
+class Prop
+{
+	protected:
+		float posX, posY; // Position coordinates
+
+	public:
+		virtual void use() = 0; // Pure virtual function
+		virtual ~Prop() {}      // Virtual destructor
+};
+
+class Ball : public Prop
+{
+	public:
+		void use() override
+		{
+			std::cout << "You throw the ball." << std::endl;
+		}
+};
+
+class Bone : public Prop
+{
+	public:
+		void use() override
+		{
+			std::cout << "You chew the bone." << std::endl;
 		}
 };
 
