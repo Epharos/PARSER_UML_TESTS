@@ -1,41 +1,66 @@
 #include <iostream>
 
-class D; // Forward declaration
+class Location; // Forward declaration
 
-class A
+class LivingBeing
 {
-public:
-	int x;
-
-	void foo() {}
-
-private:
-	std::string secret;
-
-	void hidden() {}
-
-protected:
-	D* objects;
-
-	void protectedMethod() {}
+	protected:
+		Location* location; // Pointer to Location
+	public:
+		virtual void speak() = 0; // Pure virtual function
+		virtual ~LivingBeing() {}  // Virtual destructor
 };
 
-class B : public A
+class Dog : public LivingBeing
 {
-public:
-	void bar() {}
+	public:
+		void speak() override
+		{
+			std::cout << "Woof!" << std::endl;
+		}
 };
 
-class C : public A
+class Cat : public LivingBeing
 {
-public:
-	void baz() {}
+	public:
+		void speak() override
+		{
+			std::cout << "Meow!" << std::endl;
+		}
 };
 
-class D
+class Location
 {
-public:
-	void qux() {}
+	public:
+		virtual void describe() = 0; // Pure virtual function
+		virtual ~Location() {}        // Virtual destructor
+};
+
+class Forest : public Location
+{
+	public:
+		void describe() override
+		{
+			std::cout << "A dense forest with towering trees." << std::endl;
+		}
+};
+
+class Desert : public Location
+{
+	public:
+		void describe() override
+		{
+			std::cout << "A vast desert with rolling dunes." << std::endl;
+		}
+};
+
+class House : public Location
+{
+	public:
+		void describe() override
+		{
+			std::cout << "A cozy house with a warm fireplace." << std::endl;
+		}
 };
 
 int main()
