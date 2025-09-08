@@ -2,6 +2,7 @@
 #include <vector>
 
 class Location; // Forward declaration
+class Prop;     // Forward declaration
 
 class LivingBeing
 {
