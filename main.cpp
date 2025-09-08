@@ -61,14 +61,14 @@ public:
 class Location
 {
 	protected:
-		std::vector<Prop> props;
+		std::vector<Prop*> props;
 	public:
 		virtual void describe() = 0; // Pure virtual function
 		virtual ~Location() {}        // Virtual destructor
 
 		bool addProp(Prop* prop)
 		{
-			props.push_back(*prop);
+			props.push_back(prop);
 			return true;
 		}
 };
