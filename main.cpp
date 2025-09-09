@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <array>
 
 class Location; // Forward declaration
 
@@ -9,7 +10,6 @@ class LivingBeing
 		Location* location; // Pointer to Location
 	public:
 		virtual void speak() = 0; // Pure virtual function
-		virtual ~LivingBeing() {}  // Virtual destructor
 };
 
 class Dog : public LivingBeing
@@ -34,10 +34,10 @@ class Prop
 {
 protected:
 	float posX, posY; // Position coordinates
-
+	char color[24]; // Color of the prop
+	std::array<float, 3> size; // Size dimensions (width, height, depth)
 public:
 	virtual void use() = 0; // Pure virtual function
-	virtual ~Prop() {}      // Virtual destructor
 };
 
 class Ball : public Prop
@@ -64,7 +64,6 @@ class Location
 		std::vector<Prop*> props;
 	public:
 		virtual void describe() = 0; // Pure virtual function
-		virtual ~Location() {}        // Virtual destructor
 
 		bool addProp(Prop* prop)
 		{
